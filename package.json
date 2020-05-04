@@ -1,0 +1,40 @@
+{
+  "name": "rallying-cry-calendar",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prettier": "prettier --write 'src/**/*.js'",
+    "prettier-check": "prettier --check 'src/**/*.js'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jcavanagh/rallying-cry-calendar.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jcavanagh/rallying-cry-calendar/issues"
+  },
+  "homepage": "https://github.com/jcavanagh/rallying-cry-calendar#readme",
+  "dependencies": {
+    "aws-sdk": "^2.668.0",
+    "discord.js": "^12.2.0",
+    "dotenv": "^8.2.0",
+    "googleapis": "^49.0.0",
+    "icalendar": "^0.7.1",
+    "uuid": "^8.0.0"
+  },
+  "devDependencies": {
+    "husky": "^4.2.5",
+    "prettier": "^2.0.5",
+    "pretty-quick": "^2.0.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  }
+}
