@@ -25,6 +25,8 @@
     "dotenv": "^8.2.0",
     "googleapis": "^49.0.0",
     "icalendar": "^0.7.1",
+    "moment": "^2.25.3",
+    "moment-timezone": "^0.5.28",
     "uuid": "^8.0.0"
   },
   "devDependencies": {

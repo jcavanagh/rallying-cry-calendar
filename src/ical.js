@@ -9,7 +9,7 @@ export function createFromDiscord(realm, discordEvents) {
     calEvent.setSummary(event.summary);
     calEvent.setDate(event.date);
     calEvent.setDescription(event.description);
-    calEvent.setLocation(`Stormwind City, ${realm}`);
+    calEvent.setLocation(event.location);
 
     ical.addComponent(calEvent);
   }
