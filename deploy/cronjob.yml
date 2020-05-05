@@ -13,5 +13,20 @@ spec:
             - name: rallying-cry-calendar-cron
               imagePullPolicy: Always
               image: registry.hub.docker.com/jcavanagh/rallying-cry-calendar:master
-              args: []
+              env:
+                - name: DISCORD_BOT_TOKEN
+                  valueFrom:
+                    secretKeyRef:
+                      key: DISCORD_BOT_TOKEN
+                      name: discord-token
+                - name: AWS_ACCESS_KEY_ID
+                  valueFrom:
+                    secretKeyRef:
+                      key: AWS_ACCESS_KEY_ID
+                      name: aws-user
+                - name: AWS_SECRET_ACCESS_KEY
+                  valueFrom:
+                    secretKeyRef:
+                      key: AWS_SECRET_ACCESS_KEY
+                      name: aws-user
           restartPolicy: OnFailure

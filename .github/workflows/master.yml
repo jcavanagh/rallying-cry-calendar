@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
 
-      - name: Publish
+      - name: Build and Publish
         uses: elgohr/Publish-Docker-Github-Action@2.14
         with:
           name: jcavanagh/rallying-cry-calendar
@@ -24,3 +24,13 @@ jobs:
           registry: registry.hub.docker.com
           tags: master
           snapshot: true
+
+      - name: Setup Deploy
+        uses: matootie/dokube@v1.3.0
+        with:
+          personalAccessToken: ${{ secrets.DIGITALOCEAN_TOKEN }}
+          clusterName: jcavanagh
+
+      - name: Deploy
+        run: |
+          kubectl -n rcc apply -f deploy/cronjob.yml
