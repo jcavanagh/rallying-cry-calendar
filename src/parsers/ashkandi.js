@@ -16,6 +16,10 @@ function extractEventsFromMessage(realm, message, type) {
   // Split lines
   let lines = message
     .split('\n')
+    // Strip formatting
+    .map((l) => {
+      return l.replaceAll('*', '').replaceAll('_', '');
+    })
     // Remove any blanks
     .filter((l) => l)
     // Strip title line and header/footer delimiter lines
@@ -25,10 +29,6 @@ function extractEventsFromMessage(realm, message, type) {
     // Remove any vacancy blocks
     .filter((l) => {
       return !l.startsWith('--') && !l.includes('VACANT');
-    })
-    // Strip formatting
-    .map((l) => {
-      return l.replaceAll('*', '').replaceAll('_', '');
     });
 
   debug(`Filtered message: ${lines.join('\n')}`);
