@@ -18,7 +18,7 @@ function extractEventsFromMessage(realm, message, type) {
     .split('\n')
     // Strip formatting
     .map((l) => {
-      return l.replaceAll('*', '').replaceAll('_', '');
+      return l.replace(/[\*_]/g, '');
     })
     // Remove any blanks
     .filter((l) => l)
