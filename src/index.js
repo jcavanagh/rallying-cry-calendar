@@ -4,25 +4,7 @@ dotenv.config();
 import AWS from './aws.js';
 import Discord from './discord.js';
 import * as iCal from './ical.js';
-
-const realms = [
-  {
-    name: 'Rallying Cry Test',
-    discord: {
-      serverId: '706291021205602385',
-      channelId: '706291156102676571',
-    },
-    timezone: 'America/New_York',
-  },
-  {
-    name: 'Ashkandi',
-    discord: {
-      serverId: '644165390485946408',
-      channelId: '645300955298004992',
-    },
-    timezone: 'America/New_York',
-  },
-];
+import realms from './realms.js';
 
 const aws = new AWS();
 const discord = new Discord(process.env.DISCORD_BOT_TOKEN);

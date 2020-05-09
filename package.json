@@ -4,8 +4,11 @@
   "description": "",
   "main": "src/index.js",
   "type": "module",
+  "engines": {
+    "node": ">=14.2"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
     "prettier": "prettier --write 'src/**/*.js'",
     "prettier-check": "prettier --check 'src/**/*.js'"
   },
@@ -31,6 +34,7 @@
   },
   "devDependencies": {
     "husky": "^4.2.5",
+    "jest": "^26.0.1",
     "prettier": "^2.0.5",
     "pretty-quick": "^2.0.1"
   },
@@ -38,5 +42,8 @@
     "hooks": {
       "pre-commit": "pretty-quick --staged"
     }
+  },
+  "jest": {
+    "testEnvironment": "jest-environment-node"
   }
 }

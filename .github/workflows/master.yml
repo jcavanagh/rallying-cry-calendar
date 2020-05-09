@@ -15,7 +15,13 @@ jobs:
     steps:
       - uses: actions/checkout@v1
 
-      - name: Build and Publish
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '14.2'
+      - run: npm install
+      - run: npm test
+
+      - name: Docker Build and Publish
         uses: elgohr/Publish-Docker-Github-Action@2.14
         with:
           name: jcavanagh/rallying-cry-calendar
