@@ -79,8 +79,8 @@ function extractEventsFromMessage(realm, message) {
         events.push({
           summary: `Rallying Cry (${lineData.type})`,
           description: `${lineData.player} - ${lineData.guild}`,
-          startDate: date.toISOString(),
-          endDate: date.clone().add(5, 'm').toISOString(),
+          startDate: date.toDate(),
+          endDate: date.clone().add(5, 'm').toDate(),
           location: `Stormwind City, ${realm.name}`,
         });
 
