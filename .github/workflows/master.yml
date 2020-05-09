@@ -39,4 +39,4 @@ jobs:
 
       - name: Deploy
         run: |
-          kubectl -n rcc apply -f deploy/cronjob.yml
+          kubectl -n rcc apply -f deploy/cronjob.yml -f deploy/deployment.yml

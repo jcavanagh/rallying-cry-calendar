@@ -1,0 +1,78 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: rallying-cry-calendar-data
+  namespace: rcc
+spec:
+  storageClassName: do-block-storage
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rallying-cry-calendar
+  namespace: rcc
+  labels:
+    app: rallying-cry-calendar
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rallying-cry-calendar
+  template:
+    metadata:
+      labels:
+        app: rallying-cry-calendar
+    spec:
+      volumes:
+        - name: rallying-cry-calendar-data
+          persistentVolumeClaim:
+            claimName: rallying-cry-calendar-data
+      containers:
+        - name: rallying-cry-calendar
+          imagePullPolicy: Always
+          image: jcavanagh/rallying-cry-calendar:master
+          env:
+            - name: RCC_MODE
+              value: cron
+            - name: RCC_ALLOW_WRITE
+              value: 'true'
+            - name: NODE_DEBUG
+              value: rcc
+            - name: DISCORD_BOT_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  key: DISCORD_BOT_TOKEN
+                  name: discord-token
+            - name: AWS_ACCESS_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  key: AWS_ACCESS_KEY_ID
+                  name: aws-user
+            - name: AWS_SECRET_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  key: AWS_SECRET_ACCESS_KEY
+                  name: aws-user
+          resources:
+            limits:
+              memory: 1Gi
+            requests:
+              memory: 256Mi
+          volumeMounts:
+            - name: rallying-cry-calendar-data
+              mountPath: /data
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            periodSeconds: 30
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            periodSeconds: 30

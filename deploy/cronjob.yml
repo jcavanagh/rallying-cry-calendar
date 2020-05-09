@@ -14,6 +14,10 @@ spec:
               imagePullPolicy: Always
               image: registry.hub.docker.com/jcavanagh/rallying-cry-calendar:master
               env:
+                - name: RCC_MODE
+                  value: cron
+                - name: RCC_ALLOW_WRITE
+                  value: 'true'
                 - name: NODE_DEBUG
                   value: rcc
                 - name: DISCORD_BOT_TOKEN

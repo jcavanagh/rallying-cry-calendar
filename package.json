@@ -26,8 +26,10 @@
     "aws-sdk": "^2.668.0",
     "discord.js": "^12.2.0",
     "dotenv": "^8.2.0",
+    "express": "^4.17.1",
     "googleapis": "^49.0.0",
     "icalendar": "^0.7.1",
+    "lodash": "^4.17.15",
     "moment": "^2.25.3",
     "moment-timezone": "^0.5.28",
     "uuid": "^8.0.0"

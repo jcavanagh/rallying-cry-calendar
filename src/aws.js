@@ -1,4 +1,4 @@
-import aws from 'aws-sdk';
+import aws, { ProcessCredentials } from 'aws-sdk';
 
 import util from 'util';
 const debug = util.debuglog('rcc');
@@ -14,6 +14,11 @@ export default class AWS {
   }
 
   storeCalendar(realm, iCal) {
+    if (process.env.RCC_ALLOW_WRITE !== 'true') {
+      console.info(`Not saving calender for realm ${realm.name} - write disabled`);
+      return;
+    }
+
     console.info(`Saving calendar for realm ${realm.name}`);
     debug(iCal.toString());
 
