@@ -31,20 +31,43 @@ export default class Discord {
     throw new Error(`Failed to login to Discord - timeout after ${(maxRetries * interval) / 1000}s`);
   }
 
-  async getChannelMessages(realm) {
+  async getRealmServer(realm) {
     const guild = await this.client.guilds.resolve(realm.discord.serverId);
     if (!guild) {
       console.error(
-        `Could not retrieve messages for server: ${realm.name} - bot is not a member of server ${realm.discord.serverId}`
+        `Could not get server for realm: ${realm.name} - bot is not a member of server ${realm.discord.serverId}`
+      );
+      return null;
+    }
+
+    return guild;
+  }
+
+  async getRealmChannel(realm) {
+    const channel = await this.client.channels.fetch(realm.discord.channelId);
+    if (!channel) {
+      console.error(
+        `Could not get server channel for realm: ${realm.name} - bot could not read channel ${realm.discord.channelId}`
       );
       return [];
     }
 
-    const channel = await this.client.channels.fetch(realm.discord.channelId);
+    return channel;
+  }
+
+  async sendMessage(realm, message) {
+    const channel = await this.getRealmChannel(realm);
     if (!channel) {
-      console.error(
-        `Could not retrieve messages for server: ${realm.name} - bot could not read channel ${realm.discord.channelId}`
-      );
+      console.error(`Failed to send message to realm: ${realm.name} - no channel`);
+      return;
+    }
+
+    return channel.send(message);
+  }
+
+  async getChannelMessages(realm) {
+    const channel = await this.getRealmChannel(realm);
+    if (!channel) {
       return [];
     }
 

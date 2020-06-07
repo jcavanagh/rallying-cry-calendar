@@ -1,5 +1,7 @@
 import fs from 'fs';
 
+const isKube = process.env.
+
 function getPath(realm) {
   return `/data/${realm.name}.json`;
 }

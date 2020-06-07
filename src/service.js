@@ -75,7 +75,7 @@ export default () => {
           } catch (e) {
             console.error(`Error running command: ${cmd} for realm ${realm.name}`, args);
           } finally {
-            locks[realm.name] = true;
+            locks[realm.name] = false;
           }
         }
       });
@@ -99,11 +99,9 @@ export default () => {
     const healthyStates = [0, 3];
 
     try {
-      let status;
+      let status = 'DOWN';
       if (healthyStates.includes(discord?.client?.ws?.status)) {
         status = 'UP';
-      } else {
-        status = 'DOWN';
       }
     } catch (e) {
       console.error('Error in health check', e);
