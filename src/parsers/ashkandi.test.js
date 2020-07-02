@@ -1,9 +1,9 @@
 import ashkandi from './ashkandi.js';
-import realms from '../realms.js';
+import realms from '../../realms.js';
 
 const realm = realms.find((r) => r.name == 'Ashkandi');
 
-test('Parses basic schedule', () => {
+test('Parses basic RC schedule', () => {
   const testMessages = [
     {
       id: '708095171400695878',
@@ -147,6 +147,212 @@ test('Parses basic schedule', () => {
   ];
 
   // Parse and compare
-  const result = ashkandi(realm, testMessages);
+  const result = ashkandi(realm, testMessages, 'rallyingCry');
+  expect(result).toEqual(expected);
+});
+
+test('Parses basic ZG schedule', () => {
+  const testMessages = [
+    {
+      id: '726910310706839702',
+      type: 0,
+      content: 'Draconis Erus is dropping a heart at 6:20',
+      channel_id: '725238755623174184',
+      author: {
+        id: '705105196468142191',
+        username: 'Chirish',
+        avatar: null,
+        discriminator: '6492',
+        public_flags: 0,
+      },
+      attachments: [],
+      embeds: [],
+      mentions: [],
+      mention_roles: [],
+      pinned: false,
+      mention_everyone: false,
+      tts: false,
+      timestamp: '2020-06-28T21:22:03.413000+00:00',
+      edited_timestamp: null,
+      flags: 0,
+      reactions: [
+        {
+          emoji: { id: null, name: '\ud83d\udc4d' },
+          count: 1,
+          me: false,
+        },
+      ],
+    },
+    {
+      id: '726822282248454264',
+      type: 0,
+      content: '620?',
+      channel_id: '725238755623174184',
+      author: {
+        id: '620810481262919681',
+        username: 'celzaria.fadory',
+        avatar: 'b1c478ffd7bcbde52a9cccad364d01a8',
+        discriminator: '2652',
+        public_flags: 0,
+      },
+      attachments: [],
+      embeds: [],
+      mentions: [],
+      mention_roles: [],
+      pinned: false,
+      mention_everyone: false,
+      tts: false,
+      timestamp: '2020-06-28T15:32:15.793000+00:00',
+      edited_timestamp: null,
+      flags: 0,
+    },
+    {
+      id: '725243045347328000',
+      type: 0,
+      content:
+        '**Spirit of Zandalar Schedule**\n' +
+        '===================\n' +
+        '**__Sunday, June 28th__**\n' +
+        'Mail Enhancement - 7:30PM\n' +
+        '\n' +
+        '\n' +
+        '**__Monday, June 29th__**\n' +
+        '\n' +
+        '\n' +
+        '**__Tuesday, June 30th__**\n' +
+        'Booty Bae - 7:25PM\n' +
+        '\n' +
+        '\n' +
+        '**__Wednesday, July 1st__**\n' +
+        '\n' +
+        '\n' +
+        '**__Thursday, July 2nd__**\n' +
+        'Booty Bae - 7:25PM\n' +
+        '\n' +
+        '\n' +
+        '**__Friday, July 3rd__**\n' +
+        'Onslaught - 8:20PM\n' +
+        '\n' +
+        '**__Saturday, July 4th__**\n' +
+        '\n' +
+        '\n' +
+        '===================',
+      channel_id: '725238755623174184',
+      author: {
+        id: '310288695968137217',
+        username: 'Borgir',
+        avatar: '3ab4aaa2bbf8aac37a0486ebae1871bb',
+        discriminator: '3493',
+        public_flags: 64,
+      },
+      attachments: [],
+      embeds: [],
+      mentions: [],
+      mention_roles: [],
+      pinned: false,
+      mention_everyone: false,
+      tts: false,
+      timestamp: '2020-06-24T06:56:56.375000+00:00',
+      edited_timestamp: '2020-06-28T04:49:02.112000+00:00',
+      flags: 0,
+    },
+    {
+      id: '725242821073960971',
+      type: 0,
+      content:
+        '===================\n' +
+        '***__Format__*\n' +
+        '**Name (Guild) - Time\n' +
+        '\n' +
+        '***__Example__***\n' +
+        'Borgir (Aptitude) - 6:40PM\n' +
+        '===================\n' +
+        '__**Weekly Reoccurring**__\n' +
+        'Sunday - Mail Enhancement 7:30PM\n' +
+        'Monday -\n' +
+        'Tuesday -\n' +
+        'Wednesday - \n' +
+        'Thursday - \n' +
+        'Friday - Onslaught 8:20PM\n' +
+        'Saturday -\n' +
+        '===================',
+      channel_id: '725238755623174184',
+      author: {
+        id: '310288695968137217',
+        username: 'Borgir',
+        avatar: '3ab4aaa2bbf8aac37a0486ebae1871bb',
+        discriminator: '3493',
+        public_flags: 64,
+      },
+      attachments: [],
+      embeds: [],
+      mentions: [],
+      mention_roles: [],
+      pinned: false,
+      mention_everyone: false,
+      tts: false,
+      timestamp: '2020-06-24T06:56:02.904000+00:00',
+      edited_timestamp: '2020-06-26T04:37:29.220000+00:00',
+      flags: 0,
+    },
+    {
+      id: '725242781689315328',
+      type: 0,
+      content:
+        'The intent of this channel is for people to schedule when they will be turning in a Heart of Hakkar (HoH) and triggering Spirit of Zandalar (SoZ). The goal is to have SoZ scheduled around already scheduled Rallying Cry (RC) buff times 5-10 minutes before and/or after a scheduled RC. Unlike RC, there is no cooldown for SoZ aside from the small troll RP event. Times can be scheduled close together, but we recommend at least 5 minutes apart. Note that you must be level 58 or higher to complete the quest and trigger SoZ.',
+      channel_id: '725238755623174184',
+      author: {
+        id: '310288695968137217',
+        username: 'Borgir',
+        avatar: '3ab4aaa2bbf8aac37a0486ebae1871bb',
+        discriminator: '3493',
+        public_flags: 64,
+      },
+      attachments: [],
+      embeds: [],
+      mentions: [],
+      mention_roles: [],
+      pinned: false,
+      mention_everyone: false,
+      tts: false,
+      timestamp: '2020-06-24T06:55:53.514000+00:00',
+      edited_timestamp: '2020-06-24T07:05:41.818000+00:00',
+      flags: 0,
+    },
+  ];
+
+  const expected = [
+    {
+      summary: 'Spirit of Zandalar',
+      description: 'Mail Enhancement',
+      startDate: new Date('2020-06-28T23:30:00.000Z'),
+      endDate: new Date('2020-06-28T23:35:00.000Z'),
+      location: 'Yojamba Isle/Booty Bay, Ashkandi',
+    },
+    {
+      summary: 'Spirit of Zandalar',
+      description: 'Booty Bae',
+      startDate: new Date('2020-06-30T23:25:00.000Z'),
+      endDate: new Date('2020-06-30T23:30:00.000Z'),
+      location: 'Yojamba Isle/Booty Bay, Ashkandi',
+    },
+    {
+      summary: 'Spirit of Zandalar',
+      description: 'Booty Bae',
+      startDate: new Date('2020-07-02T23:25:00.000Z'),
+      endDate: new Date('2020-07-02T23:30:00.000Z'),
+      location: 'Yojamba Isle/Booty Bay, Ashkandi',
+    },
+    {
+      summary: 'Spirit of Zandalar',
+      description: 'Onslaught',
+      startDate: new Date('2020-07-04T00:20:00.000Z'),
+      endDate: new Date('2020-07-04T00:25:00.000Z'),
+      location: 'Yojamba Isle/Booty Bay, Ashkandi',
+    },
+  ];
+
+  // Parse and compare
+  const result = ashkandi(realm, testMessages, 'zandalar');
   expect(result).toEqual(expected);
 });

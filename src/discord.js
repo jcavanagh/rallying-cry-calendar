@@ -31,7 +31,7 @@ export default class Discord {
     throw new Error(`Failed to login to Discord - timeout after ${(maxRetries * interval) / 1000}s`);
   }
 
-  async getChannelMessages(realm) {
+  async getChannelMessages(realm, type) {
     const guild = await this.client.guilds.resolve(realm.discord.serverId);
     if (!guild) {
       console.error(
@@ -40,10 +40,10 @@ export default class Discord {
       return [];
     }
 
-    const channel = await this.client.channels.fetch(realm.discord.channelId);
+    const channel = await this.client.channels.fetch(realm.discord[type]?.channelId);
     if (!channel) {
       console.error(
-        `Could not retrieve messages for server: ${realm.name} - bot could not read channel ${realm.discord.channelId}`
+        `Could not retrieve messages for server: ${realm.name} - bot could not read channel ${realm.discord[type]?.channelId}`
       );
       return [];
     }
@@ -62,23 +62,23 @@ export default class Discord {
     );
   }
 
-  parseChannelMessages(realm, messages) {
+  parseChannelMessages(realm, type, messages) {
     const parser = parsers[realm.name];
 
     if (!parser) {
       console.error(`Could not parse messages - no parser for realm ${realm.name}`);
     }
 
-    return parser(realm, messages);
+    return parser(realm, messages, type);
   }
 
-  async getScheduleEvents(realm) {
-    const messages = await this.getChannelMessages(realm);
-    debug(`Messages found for ${realm.name} in channel ${realm.discord.channelId}`);
+  async getScheduleEvents(realm, type) {
+    const messages = await this.getChannelMessages(realm, type);
+    debug(`Messages found for ${realm.name} in channel ${realm.discord[type]?.channelId}`);
     debug(messages);
 
-    const parsed = this.parseChannelMessages(realm, messages);
-    debug(`Parsed messages from ${realm.name} in channel ${realm.discord.channelId}`);
+    const parsed = this.parseChannelMessages(realm, type, messages);
+    debug(`Parsed messages from ${realm.name} in channel ${realm.discord[type]?.channelId}`);
     debug(parsed);
 
     return parsed;
