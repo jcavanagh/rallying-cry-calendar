@@ -72,16 +72,24 @@ export default class Discord {
     return parser(realm, messages, type);
   }
 
-  async getScheduleEvents(realm, type) {
-    const messages = await this.getChannelMessages(realm, type);
-    debug(`Messages found for ${realm.name} in channel ${realm.discord[type]?.channelId}`);
-    debug(messages);
+  async getScheduleEvents(realm) {
+    const types = ['rallyingCry', 'zandalar'];
 
-    const parsed = this.parseChannelMessages(realm, type, messages);
-    debug(`Parsed messages from ${realm.name} in channel ${realm.discord[type]?.channelId}`);
-    debug(parsed);
+    let allEvents = [];
 
-    return parsed;
+    for (const type of types) {
+      const messages = await this.getChannelMessages(realm, type);
+      debug(`Messages found for ${realm.name} in channel ${realm.discord[type]?.channelId}`);
+      debug(messages);
+
+      const parsed = this.parseChannelMessages(realm, type, messages);
+      debug(`Parsed messages from ${realm.name} in channel ${realm.discord[type]?.channelId}`);
+      debug(parsed);
+
+      allEvents += parsed;
+    }
+
+    return allEvents;
   }
 
   disconnect() {
