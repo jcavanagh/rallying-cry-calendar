@@ -1,5 +1,5 @@
 import ashkandi from './ashkandi.js';
-import realms from '../../realms.js';
+import realms from '../realms.js';
 
 const realm = realms.find((r) => r.name == 'Ashkandi');
 
