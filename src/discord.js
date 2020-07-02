@@ -86,7 +86,7 @@ export default class Discord {
       debug(`Parsed messages from ${realm.name} in channel ${realm.discord[type]?.channelId}`);
       debug(parsed);
 
-      allEvents += parsed;
+      allEvents = [...allEvents, ...parsed];
     }
 
     return allEvents;
