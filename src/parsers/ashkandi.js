@@ -23,6 +23,9 @@ export default function (realm, messages, type) {
       summary: () => `Spirit of Zandalar`,
       location: `Yojamba Isle/Booty Bay, ${realm.name}`,
     },
+    darkmoon: {
+      title: 'Darkmoon Faire',
+    },
   };
 
   // Extract mode markers
@@ -50,6 +53,10 @@ export default function (realm, messages, type) {
       // Strip title line and header/footer delimiter lines
       .filter((l) => {
         return !l.startsWith(scheduleBorderDelim) && !l.startsWith(scheduleTitle);
+      })
+      // Strip Darkmoon Faire lines
+      .filter((l) => {
+        return !l.contains(markers.darkmoon.title);
       })
       // Remove any vacancy blocks
       .filter((l) => {
