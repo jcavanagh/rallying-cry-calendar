@@ -56,7 +56,7 @@ export default function (realm, messages, type) {
       })
       // Strip Darkmoon Faire lines
       .filter((l) => {
-        return !l.contains(markers.darkmoon.title);
+        return !l.includes(markers.darkmoon.title);
       })
       // Remove any vacancy blocks
       .filter((l) => {
