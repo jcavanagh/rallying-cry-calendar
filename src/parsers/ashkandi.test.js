@@ -39,7 +39,7 @@ test('Parses basic RC schedule', () => {
     {
       id: '675491166418108466',
       content:
-        '**Rallying Cry Schedule**\n' +
+        '**Rallying Cry of the Dragonslayer Schedule**\n' +
         '======================\n' +
         '__**Saturday, May 9th\n' +
         '**__Toni (Muse) - **6:50PM Onyxia**\n' +
