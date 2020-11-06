@@ -8,7 +8,7 @@ export default function (realm, messages, type) {
   const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
   const markers = {
     rallyingCry: {
-      scheduleTitle: 'Rallying Cry Schedule',
+      scheduleTitle: 'Rallying Cry of the Dragonslayer Schedule',
       scheduleBorderDelim: '==',
       vacancyTitle: 'VACANT',
       vacancyBorderDelim: '--',
