@@ -29,17 +29,14 @@ export default function (realm, messages, type) {
     rallyingCry: {
       summary: (lineData) => `Rallying Cry (${lineData.type})`,
       location: `Stormwind City, ${realm.name}`,
-      eventTypes: ['onyxia', 'nefarian'],
     },
     zandalar: {
       summary: () => `Spirit of Zandalar`,
       location: `Yojamba Isle/Booty Bay, ${realm.name}`,
-      eventTypes: ['hakkar'],
     },
     rend: {
       summary: () => `Warchief's Blessing`,
       location: `Orgrimmar/Crossroads, ${realm.name}`,
-      eventTypes: ['rend'],
     },
     darkmoon: {
       title: 'Darkmoon Faire',
