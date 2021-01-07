@@ -7,21 +7,39 @@ export default function (realm, messages, type) {
   // Markers
   const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
   const markers = {
-    rallyingCry: {
-      scheduleTitle: 'Rallying Cry of the Dragonslayer Schedule',
+    // This maps event type strings into the proper handlers below
+    eventTypes: {
+      hakkar: 'zandalar',
+      soz: 'zandalar',
+      onyxia: 'rallyingCry',
+      nefarian: 'rallyingCry',
+      ony: 'rallyingCry',
+      nef: 'rallyingCry',
+      rend: 'rend',
+      wcb: 'rend',
+    },
+    // Common markers for the combined buff list
+    common: {
+      scheduleTitle: 'Rallying Spirit of Ashkandi',
       scheduleBorderDelim: '==',
       vacancyTitle: 'VACANT',
       vacancyBorderDelim: '--',
+    },
+    // Event types
+    rallyingCry: {
       summary: (lineData) => `Rallying Cry (${lineData.type})`,
       location: `Stormwind City, ${realm.name}`,
+      eventTypes: ['onyxia', 'nefarian'],
     },
     zandalar: {
-      scheduleTitle: 'Spirit of Zandalar Schedule',
-      scheduleBorderDelim: '==',
-      vacancyTitle: 'VACANT',
-      vacancyBorderDelim: '--',
       summary: () => `Spirit of Zandalar`,
       location: `Yojamba Isle/Booty Bay, ${realm.name}`,
+      eventTypes: ['hakkar'],
+    },
+    rend: {
+      summary: () => `Warchief's Blessing`,
+      location: `Orgrimmar/Crossroads, ${realm.name}`,
+      eventTypes: ['rend'],
     },
     darkmoon: {
       title: 'Darkmoon Faire',
@@ -29,7 +47,7 @@ export default function (realm, messages, type) {
   };
 
   // Extract mode markers
-  const { scheduleTitle, scheduleBorderDelim, vacancyTitle, vacancyBorderDelim, summary, location } = markers[type];
+  const { scheduleTitle, scheduleBorderDelim, vacancyTitle, vacancyBorderDelim } = markers.common;
 
   // This is pretty rigid, but it'll do I guess
   function extractEventsFromMessage(realm, message) {
@@ -47,6 +65,21 @@ export default function (realm, messages, type) {
       // Strip formatting
       .map((l) => {
         return l.replace(/[\*_~]/g, '');
+      })
+      // Strip emotes
+      .map((l) => {
+        return l.replace(/<:.+?>/g, '');
+      })
+      // Strip unicode emoji
+      .map((l) => {
+        return l.replace(
+          /([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g,
+          ''
+        );
+      })
+      // Strip excess whitespace
+      .map((l) => {
+        return l.trim();
       })
       // Remove any blanks
       .filter((l) => l)
@@ -80,7 +113,7 @@ export default function (realm, messages, type) {
       if (isBlockStart(line)) {
         // Loop through the block and find events for that day
         let blockIdx = idx + 1;
-        const blockEntryPattern = /(?:(?<player>[\p{L}\s]+)\s+)?(?:\()?(?<guild>[\p{L}\s]+)(?:\))?[\s-]+(?<time>[\w:]+)(?:\s+(?<type>.+))?/u;
+        const blockEntryPattern = /(?:(?<player>[\p{L}\s]+)\s+)?(?:[\(<])?(?<guild>[\p{L}\s]+)(?:[\)>])?[\s-]+(?<time>[\w:]+)(?:\s+(?<type>.+))?/u;
         while (!isBlockStart(lines[blockIdx]) && blockIdx < lines.length) {
           const blockLine = lines[blockIdx];
           const lineData = blockLine.match(blockEntryPattern)?.groups;
@@ -90,6 +123,19 @@ export default function (realm, messages, type) {
             blockIdx++;
             continue;
           }
+
+          // Get event type
+          const eventType = (lineData.type || '').toLowerCase();
+          const eventHandler = markers.eventTypes[eventType];
+
+          if (!eventHandler) {
+            console.warn(`Could not handle buff event type: ${eventType}`);
+            blockIdx++;
+            continue;
+          }
+
+          // Get the event-specific helpers
+          const { summary, location } = markers[eventHandler];
 
           // Trim guild name
           lineData.guild = lineData.guild?.trim();
@@ -108,8 +154,8 @@ export default function (realm, messages, type) {
           // Needs to be fudged a little bit since regex is a trap
           let description;
           if (lineData.player && lineData.guild) {
-            // If the original line did not contain a paren, assume it's a guild-only line
-            if (blockLine.includes('(')) {
+            // If the original line did not contain a paren or bracket, assume it's a guild-only line
+            if (blockLine.includes('(') || blockLine.includes('<')) {
               description = `${lineData.player} - ${lineData.guild}`;
             } else {
               description = `${lineData.player} ${lineData.guild}`;

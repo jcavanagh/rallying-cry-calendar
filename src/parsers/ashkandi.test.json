@@ -1,0 +1,109 @@
+[
+  {
+    "id": "796515270646431765",
+    "type": 0,
+    "content": "<@!156119207136722945> I assume this is a SoZ?",
+    "channel_id": "794360288223952907",
+    "author": {
+      "id": "310288695968137217",
+      "username": "Borgir",
+      "avatar": "3ab4aaa2bbf8aac37a0486ebae1871bb",
+      "discriminator": "7777",
+      "public_flags": 64
+    },
+    "attachments": [],
+    "embeds": [],
+    "mentions": [
+      {
+        "id": "156119207136722945",
+        "username": "CarriedAway",
+        "avatar": "53bac5923c1cf958e9f958e4db9fba5e",
+        "discriminator": "1172",
+        "public_flags": 0
+      }
+    ],
+    "mention_roles": [],
+    "pinned": false,
+    "mention_everyone": false,
+    "tts": false,
+    "timestamp": "2021-01-06T23:07:19.060000+00:00",
+    "edited_timestamp": null,
+    "flags": 0
+  },
+  {
+    "id": "796515154224218162",
+    "type": 0,
+    "content": "Friday the the 8th at 6:20 Stormin (Mail Enhancement)",
+    "channel_id": "794360288223952907",
+    "author": {
+      "id": "156119207136722945",
+      "username": "CarriedAway",
+      "avatar": "53bac5923c1cf958e9f958e4db9fba5e",
+      "discriminator": "1172",
+      "public_flags": 0
+    },
+    "attachments": [],
+    "embeds": [],
+    "mentions": [],
+    "mention_roles": [],
+    "pinned": false,
+    "mention_everyone": false,
+    "tts": false,
+    "timestamp": "2021-01-06T23:06:51.303000+00:00",
+    "edited_timestamp": null,
+    "flags": 0
+  },
+  {
+    "id": "794361068326879262",
+    "type": 0,
+    "content": "==============================\n<:zandalar:775724105466642463>  <:RC:679409217270054937> **Rallying Spirit of Ashkandi** <:nefhead:764868312991399996>  <:WCB:767257570632663040> \n==============================\n \n\ud83c\udfa2 \ud83c\udfa1 **Darkmoon Faire in Elwynn Forest** \ud83c\udfa0 \ud83c\udfaa\n\n**__Wednesday, January 6th__**\nExtinction - 4:45PM Rend\nDubspeach (Primordial Kings) - 6:20PM Hakkar\nPowerplay (Primordial Kings) - **6:30PM Nefarian**\nCamouflage (Grey Parses) - **7:30PM Onyxia**\nJimz (Extinction) - 7:40PM Hakkar\nExtinction - 7:45PM Rend\n\n\n**__Thursday, January 7th__**\nFelthius <Deadlyest> - 6:20PM Hakkar\nElsafreeze (What Comes Next) - 7:20PM Hakkar\nHairbackjr (Vindication) - **7:30PM Onyxia**\nHogar (Milk Studios) - 7:30PM Rend\nRasendalghol (Invasive Death) - **8:30PM Nefarian**\n\n\n**__Friday, January 8th__**\nHackert (Poseidon) - **6:30PM Onyxia**\nHairbackjr (Vindication) - **7:30PM Nefarian**\n\n\n**__Saturday, January 9th__**\nRockyfett (Poseidon) - **6:30PM Onyxia**\nSaberlily (Well We Tried) - **7:30PM Nefarian**\n\n\n**__Sunday, January 10th__**\nTankerino (Average Joes) -** 6:30PM Onyxia**\nValorious (Poseidon) - **7:30PM Nefarian**\n\n\n**__Monday, January 11th__**\nLayz (Poseidon) - **6:30PM Onyxia**\n\n\n\ud83c\udfa2 \ud83c\udfa1 **Darkmoon Faire leaves 3:00AM** \ud83c\udfa0 \ud83c\udfaa\n\n**__Tuesday, January 12th__**\n\n**__Wednesday, January 13th__**\n\n**__Thursday, January 14th__**\n\n**__Friday, January 15th__**\n\n**__Saturday, January 16th__**\n\n**__Sunday, January 17th__**\n\n**__Monday, January 18th__**\n\n**__Tuesday, January 19th__**\n\n===================================",
+    "channel_id": "794360288223952907",
+    "author": {
+      "id": "310288695968137217",
+      "username": "Borgir",
+      "avatar": "3ab4aaa2bbf8aac37a0486ebae1871bb",
+      "discriminator": "7777",
+      "public_flags": 64
+    },
+    "attachments": [],
+    "embeds": [],
+    "mentions": [],
+    "mention_roles": [],
+    "pinned": false,
+    "mention_everyone": false,
+    "tts": false,
+    "timestamp": "2021-01-01T00:27:17.204000+00:00",
+    "edited_timestamp": "2021-01-06T22:53:56.794000+00:00",
+    "flags": 0
+  },
+  {
+    "id": "794360563651575898",
+    "type": 0,
+    "content": "**How do I schedule an Onyxia or Nefarian head turn in?**\nFirst please visit the <#762692229097324615> summary of how the Rallying Cry buff works. \n\nYou can schedule your Onyxia or Nefarian head turn in if...\n- There are no other Onyxia / Nefarian head scheduled for that day\nOR\n- **6 hours** prior to another scheduled **Onyxia head**\n- **8 hours** prior to another scheduled **Nefarian head**\nOR\nIf you simply want your quest reward but do not want to be on the schedule for a Rallying Cry, you may redeem the head for your quest reward anytime within 6 hours after a scheduled Onyxia head, or 8 hours after a Nefarian head. Rallying Cry will not be triggered during this time.\n\nThe Rallying Cry buff is triggered when you turn in your quest to **Major Mattingly (Onyxia) **or** Field Marshal Afrasiabi (Nefarian)** at the Stormwind Gates. Make sure you **turn in the actual head to Highlord Bolvar prior to your scheduled time**. If the Onyxia attunement RP quest that involves Highlord Bolvar is taking place, you will need to wait for it to complete before completing his portion of the quest. Not turning in the head prior to your scheduled time will create a great delay.\n\nThe goal is to have **Spirit of Zandalar** (SoZ) scheduled around already scheduled Rallying Cry (RC) <:RC:679409217270054937> buff times 5-10 minutes before and/or after a scheduled RC. Unlike RC, there is no cooldown for SoZ aside from the small troll RP event. Times can be scheduled close together, but we recommend at least 5 minutes apart. \n\nYou must be level 58 or higher to complete the quest and trigger SoZ.\n\n**You cannot repeat the quest and turn in a 2nd HoH. Once you have turned in a HoH <:HoH:774037184923566120>  and finished the quest, you cannot do it again on that character.**\n\nIf you have any questions or concerns, please reach out to any Admin or Mod over Discord or in-game. We are here to help!",
+    "channel_id": "794360288223952907",
+    "author": {
+      "id": "310288695968137217",
+      "username": "Borgir",
+      "avatar": "3ab4aaa2bbf8aac37a0486ebae1871bb",
+      "discriminator": "7777",
+      "public_flags": 64
+    },
+    "attachments": [],
+    "embeds": [],
+    "mentions": [],
+    "mention_roles": [],
+    "pinned": true,
+    "mention_everyone": false,
+    "tts": false,
+    "timestamp": "2021-01-01T00:25:16.880000+00:00",
+    "edited_timestamp": "2021-01-01T03:05:41.103000+00:00",
+    "flags": 0,
+    "reactions": [
+      {
+        "emoji": { "id": null, "name": "\ud83d\udc4d" },
+        "count": 1,
+        "me": false
+      }
+    ]
+  }
+]
