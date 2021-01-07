@@ -4,10 +4,10 @@ export default [
     discord: {
       serverId: '706291021205602385',
       rallyingCry: {
-        channelId: '794360288223952907',
+        channelId: '706291156102676571',
       },
       zandalar: {
-        channelId: '794360288223952907',
+        channelId: '726920268567543919',
       },
     },
     timezone: 'America/New_York',
@@ -17,10 +17,10 @@ export default [
     discord: {
       serverId: '644165390485946408',
       rallyingCry: {
-        channelId: '645300955298004992',
+        channelId: '794360288223952907',
       },
       zandalar: {
-        channelId: '725238755623174184',
+        channelId: '794360288223952907',
       },
     },
     timezone: 'America/New_York',
