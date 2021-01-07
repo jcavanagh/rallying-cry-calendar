@@ -32,7 +32,7 @@ jobs:
           snapshot: true
 
       - name: Setup Deploy
-        uses: matootie/dokube@v1.3.0
+        uses: matootie/dokube@v1.3.4
         with:
           personalAccessToken: ${{ secrets.DIGITALOCEAN_TOKEN }}
           clusterName: jcavanagh
