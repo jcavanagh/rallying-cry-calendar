@@ -73,11 +73,9 @@ export default class Discord {
   }
 
   async getScheduleEvents(realm) {
-    const types = ['rallyingCry', 'zandalar'];
-
     let allEvents = [];
 
-    for (const type of types) {
+    for (const type of realm.discord.types) {
       const messages = await this.getChannelMessages(realm, type);
       debug(`Messages found for ${realm.name} in channel ${realm.discord[type]?.channelId}`);
       debug(messages);
